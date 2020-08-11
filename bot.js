@@ -22,14 +22,10 @@ bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
-		setInterval(() => {
- bot.setPresence({ game: { name: 'Watching users entering and exiting servers', type: 0 } });
-	},180000);
 });
 bot.on('ready', () => {
     // Set bot status to: "Playing with JavaScript"
 		client.login(tokenn);
- bot.setPresence({ game: { name: 'Watching users entering and exiting servers', type: 0 } });
 
     // Alternatively, you can set the activity to any of the following:
     // PLAYING, STREAMING, LISTENING, WATCHING
@@ -37,9 +33,7 @@ bot.on('ready', () => {
     // client.user.setActivity("TV", {type: "WATCHING"})
 })
 client.once('ready', () => {
-setInterval(() => {
- bot.setPresence({ game: { name: 'Watching users entering and exiting servers', type: 0 } });
-	},180000);
+	 client.user.setActivity("&help", {type: "PLAYING"});
 })
 client.on("guildMemberAdd", (member) => {
 	var kwestiaw = welcome[Math.floor(Math.random()*welcome.length)];
@@ -80,19 +74,25 @@ if(message.content == "&invite"){
 if(message.content == "&info"){
 	message.channel.send("Respect a welcoming discord bot with some server stats");
 	message.channel.send("Developed by @Pouek_#5280");
-	message.channel.send("version 1.0");
+	message.channel.send("version 1.1");
 	message.channel.send("Prefix: '&' ");
 };
 if(message.content == "&status"){
-	var targetguild = message.member.guild;
+    var targetguild = message.member.guild;
 	var online = message.guild.members.cache.filter(m => m.presence.status === 'online').size
 	var idle = message.guild.members.cache.filter(m => m.presence.status === 'idle').size
 	var dtd = message.guild.members.cache.filter(m => m.presence.status === 'dnd').size
 	var offline = message.guild.members.cache.filter(m => m.presence.status === 'offline').size
-	message.channel.send(":regional_indicator_t: :regional_indicator_o: :regional_indicator_t: :regional_indicator_a: :regional_indicator_l:  On this server are: " + targetguild.memberCount + " members");
-	message.channel.send(":green_circle: :regional_indicator_o: :regional_indicator_n: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_e: On this server are: " + online + " members");
-	message.channel.send(":crescent_moon: :regional_indicator_i: :regional_indicator_d: :regional_indicator_l: :regional_indicator_e:  On this server are: " + idle + " members");
-	message.channel.send(":red_circle: :regional_indicator_d: :regional_indicator_o: :regional_indicator_n: :regional_indicator_o: :regional_indicator_t: :regional_indicator_d: :regional_indicator_i: :regional_indicator_s: :regional_indicator_t: :regional_indicator_u: :regional_indicator_r: :regional_indicator_b:   On this server are: " + dtd + " members");
-	message.channel.send(":black_circle: :regional_indicator_o: :regional_indicator_f: :regional_indicator_f: :regional_indicator_l: :regional_indicator_i: :regional_indicator_n: :regional_indicator_e:   On this server are: " + offline + " members");
+    const serverembed = new Discord.MessageEmbed()
+    .setColor('ff0000')
+    .setTitle('Server Stats')
+    .addFields(
+{name:':ballot_box_with_check:  TOTAL On this server are: ', value: targetguild.memberCount},
+{name:':green_circle: ONLINE On this server are: ',value:online},
+{name:':crescent_moon: IDLE On this server are: ',value:idle},
+{name:':red_circle: DO NOT DISTURB On this server are: ',value:dtd},
+{name:':black_circle: OFFLINE On this server are: ',value:offline}
+    );
+	message.channel.send(serverembed);
 };
 });	
