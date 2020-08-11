@@ -4,7 +4,7 @@ var auth = require('./auth.json');
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "&";
-var tokenn = ("NzI2NzA3NTg4Mzg5MTQyNTM5.Xvt32A.018kgpBZf2CDkwqsKkDULz2MppU");
+var tokenn = ("");
 var welcome = [" has joined us!"," joined 9 old army!"," buyed minecraft premium!"," get in the right direction!"," get the right link for the server!"," buyed pizza!"," br0k3n!"," send :eyes: emoji!"," downloaded PewDiePie pixelings!"," :regional_indicator_t: :regional_indicator_h: :regional_indicator_i: :regional_indicator_c: :regional_indicator_c:"," is working on this message!"];
 var goodbye = [" has left us! React 'F' to pay respect"," went to other server"," has been hired in dark side"," cracked minecraft"," found dark web"," eat mouldy cheese with lactose intolerance"," has been kiled by Discord wave"," thinked I will not see him escape"," died from starvation"," died from waiting for Half-Life 3"," subscribed to T-Series"," drunk orange juice"];
 // Configure logger settings
