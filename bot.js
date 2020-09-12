@@ -52,7 +52,7 @@ if(guild.systemChannel){ // Checking if it's not null
 }
 });
 client.on("message", (message) => {
-
+	if (message.author.bot) return;
 if(message.content == "&help"){ // Check if content of message is "!ping"
 		message.channel.send(`Commands: &gi - tells you how many I have goodbye issues , &wi - tells you how many I have welcome issues , &idea - gives you link that you can use to send your issues ideas to creator , &status - tells you how many people are in the server online;offline;idle;dnd and in total , &invite - gives you link to invite me , &info - gives you a info about me , &ping - send you pong and ping of the bot`);
 };
